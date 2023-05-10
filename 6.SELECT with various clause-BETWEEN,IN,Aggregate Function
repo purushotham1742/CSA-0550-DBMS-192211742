@@ -1,0 +1,97 @@
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use sse;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_sse |
++---------------+
+| student       |
+| studentdept   |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student;
++-------------+-----+--------+-------+---------+---------+
+| name        | id  | gender | marks | address | subject |
++-------------+-----+--------+-------+---------+---------+
+| vyshu       | 110 | fl     |    94 | delhi   | OS      |
+| purushotham | 120 | m      |    90 | kadapa  | dbms    |
+| ram         | 130 | Ml     |    92 | goa     | mpms    |
+| supriya     | 131 | f      |    98 | goa     | pdsd    |
+| prasad      | 140 | Ma     |    99 | punjub  | ethics  |
++-------------+-----+--------+-------+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select*from student where marks between 90 and 92;
++-------------+-----+--------+-------+---------+---------+
+| name        | id  | gender | marks | address | subject |
++-------------+-----+--------+-------+---------+---------+
+| purushotham | 120 | m      |    90 | kadapa  | dbms    |
+| ram         | 130 | Ml     |    92 | goa     | mpms    |
++-------------+-----+--------+-------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student where subject in('pdsd');
++---------+-----+--------+-------+---------+---------+
+| name    | id  | gender | marks | address | subject |
++---------+-----+--------+-------+---------+---------+
+| supriya | 131 | f      |    98 | goa     | pdsd    |
++---------+-----+--------+-------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> select*from student where marks not between 95 and 99;
++-------------+-----+--------+-------+---------+---------+
+| name        | id  | gender | marks | address | subject |
++-------------+-----+--------+-------+---------+---------+
+| vyshu       | 110 | fl     |    94 | delhi   | OS      |
+| purushotham | 120 | m      |    90 | kadapa  | dbms    |
+| ram         | 130 | Ml     |    92 | goa     | mpms    |
++-------------+-----+--------+-------+---------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select sum(marks) from student where subject="dbms"
+    -> ;
++------------+
+| sum(marks) |
++------------+
+|         90 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) as average from student;
++---------+
+| average |
++---------+
+| 94.6000 |
++---------+
+1 row in set (0.04 sec)
+
+mysql> select min(marks) as minimum from student;
++---------+
+| minimum |
++---------+
+|      90 |
++---------+
+1 row in set (0.03 sec)
+
+mysql> select max(marks) as maximum from student;
++---------+
+| maximum |
++---------+
+|      99 |
++---------+
+1 row in set (0.00 sec)
+
+mysql>
